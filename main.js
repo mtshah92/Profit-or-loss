@@ -5,19 +5,33 @@ var tellButton = document.querySelector("#btn-tell-me");
 var showMessage = document.querySelector("#showMessage");
 
 function calculateProfitAndLoss(initial, quantity, current) {
-  if (initial > current) {
-    var loss = (initial - current) * quantity;
-    var lossPercentage = (loss / initial) * 100;
+  if (
+    initialPrice.value !== "" &&
+    stockQuantity.value !== "" &&
+    currentPrice.value !== ""
+  ) {
+    if (initial > 0 && quantity > 0 && current > 0) {
+      if (initial > current) {
+        var loss = (initial - current) * quantity;
+        var lossPercentage = (loss / initial) * 100;
 
-    showOutput(`Hey the loss is ${loss} amd the percent is ${lossPercentage}%`);
-  } else if (initial < current) {
-    var profit = (current - initial) * quantity;
-    var profitPercentage = (profit / initial) * 100;
-    showOutput(
-      `Hey the profit is ${profit} amd the percent is ${profitPercentage}%`
-    );
+        showOutput(
+          `Hey the loss is ${loss} amd the percent is ${lossPercentage}%`
+        );
+      } else if (initial < current) {
+        var profit = (current - initial) * quantity;
+        var profitPercentage = (profit / initial) * 100;
+        showOutput(
+          `Hey the profit is ${profit} and the percent is ${profitPercentage}%`
+        );
+      } else {
+        showOutput("No pain no gain, No gain no pain");
+      }
+    } else {
+      showOutput("All values Should be Greater than Zero");
+    }
   } else {
-    showOutput("No pain no gain and no gain np pain");
+    showOutput("Please Enter all Fields");
   }
 }
 
@@ -32,5 +46,5 @@ function submitHandler() {
 tellButton.addEventListener("click", submitHandler);
 
 function showOutput(message) {
-  showMessage.innerHTML = message;
+  showMessage.innerText = message;
 }
