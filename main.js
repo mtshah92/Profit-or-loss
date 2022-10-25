@@ -16,7 +16,7 @@ function calculateProfitAndLoss(initial, quantity, current) {
         var lossPercentage = (loss / (initial * quantity)) * 100;
 
         showOutput(
-          `Hey the loss is ${loss} amd the Loss Percent is ${lossPercentage.toFixed(
+          `Hey the loss is ${loss} and the Loss Percent is ${lossPercentage.toFixed(
             2
           )}%`
         );
